@@ -10,6 +10,7 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="H:/Tomcat/apache-tomcat-8.0.32/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="/Programvaruteknik_Lab2"/>
+	<classpathentry kind="lib" path="H:/JavaLibs/genson-1.3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
