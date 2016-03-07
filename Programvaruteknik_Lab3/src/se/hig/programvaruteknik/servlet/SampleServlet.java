@@ -1,6 +1,10 @@
 package se.hig.programvaruteknik.servlet;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -29,6 +33,8 @@ public class SampleServlet extends HttpServlet
     public SampleServlet()
     {
 	// TODO Auto-generated constructor stub
+
+	System.out.println(getClass().getClassLoader().getResource("data"));
     }
 
     private List<MatchedDataPair> createData()
@@ -60,7 +66,7 @@ public class SampleServlet extends HttpServlet
 	return combiner.build();
     }
 
-    private String toJSON(List<MatchedDataPair> data)
+    private String toJSON(List<MatchedDataPair> data, boolean pretty)
     {
 	StringBuilder builder = new StringBuilder();
 	builder.append("{\n");
@@ -68,20 +74,22 @@ public class SampleServlet extends HttpServlet
 	builder.append("\t\"unit_a\":\"Goals\",\n");
 	builder.append("\t\"unit_b\":\"Temperature\",\n");
 	builder.append("\t\"data\":\n");
-	builder.append("\t{\n");
+	builder.append("\t[\n");
 	for (MatchedDataPair pair : data)
 	{
-	    builder.append("\t\t{");
+	    builder.append("\t\t{\n");
 	    builder.append("\t\t\t\"x\": ");
 	    builder.append(pair.getXValue());
 	    builder.append(",\n");
 	    builder.append("\t\t\t\"y\": ");
 	    builder.append(pair.getYValue());
-	    builder.append("\n}\n");
+	    builder.append("\n\t\t},\n");
 	}
-	builder.append("\t}\n");
+	if (data.size() != 0) builder.deleteCharAt(builder.length() - 2);
+	builder.append("\t]\n");
 	builder.append("}");
-	return builder.toString();
+	String result = builder.toString();
+	return pretty ? result : result.replace("\n", "").replace("\t", "");
     }
 
     /**
@@ -90,9 +98,8 @@ public class SampleServlet extends HttpServlet
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-	// request.getParameter(arg0)
 	response.setContentType("application/json;charset=UTF-8");
-	response.getWriter().append(toJSON(createData()));
+	response.getWriter().append(toJSON(createData(), "true".equals(request.getParameter("pretty"))));
     }
 
     /**

@@ -98,20 +98,6 @@ public class DataSupplierFactory
      */
     public static Supplier<String> createURLFetcher(String url)
     {
-	try
-	{
-	    File cache = Paths.get("data", "http_cache", URLEncoder.encode(url, "UTF-8")).toFile();
-	    if (!cache.exists())
-	    {
-		String content = createURLFetcher(url, false).get();
-		cache.getParentFile().mkdirs();
-		Files.write(cache.toPath(), content.getBytes(Charset.forName("UTF-8")), StandardOpenOption.CREATE);
-	    }
-	    return createFileFetcher(cache.getPath());
-	}
-	catch (Exception exception)
-	{
-	    throw new RuntimeException(exception);
-	}
+	return createURLFetcher(url, false);
     };
 }
