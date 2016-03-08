@@ -3,6 +3,7 @@
 	<name>Programvaruteknik_Lab3</name>
 	<comment></comment>
 	<projects>
+		<project>Programvaruteknik_Lab2</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
