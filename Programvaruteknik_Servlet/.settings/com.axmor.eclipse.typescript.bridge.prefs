@@ -1,0 +1,12 @@
+declaration=false
+eclipse.preferences.version=1
+mapRoot=WebContent
+module=default
+noImplicitAny=false
+noResolve=false
+removeComments=false
+source=WebContent
+sourceMap=false
+target=WebContent
+targetRelativePathBasedOnSource=true
+targetVersion=ES5

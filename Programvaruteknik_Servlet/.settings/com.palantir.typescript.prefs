@@ -1,0 +1,5 @@
+build.path.exportedFolder=
+build.path.sourceFolder=ts/app
+compiler.outputDirOption=WebContent/app
+compiler.outputFileOption=
+eclipse.preferences.version=1

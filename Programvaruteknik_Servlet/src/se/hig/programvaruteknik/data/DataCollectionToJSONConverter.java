@@ -9,6 +9,8 @@ import se.hig.programvaruteknik.model.MatchedDataPair;
 
 /**
  * Gets the statistics about weather and goals as a JSON
+ * 
+ * @author Viktor Hanstorp (ndi14vhp@student.hig.se)
  */
 public class DataCollectionToJSONConverter
 {
